@@ -1,8 +1,7 @@
 name: Deploy site
 
 on:
-  push:
-    branches: [ "main" ]
+  workflow_dispatch:
 
 env:
   REGISTRY: ghcr.io
@@ -74,4 +73,3 @@ jobs:
          TAGS: ${{ steps.docker_meta.outputs.tags }}
          COSIGN_EXPERIMENTAL: "true"
         run: cosign sign ${TAGS} --force
-        
